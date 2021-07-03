@@ -1,0 +1,101 @@
+
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@model IEnumerable<AppBootstrap.Model.Cliente>
+@{
+    ViewData["Title"] = "Clientes";
+    var valorRol = "";
+}
+
+<h2 class="text-center m-2"> Lista de Clientes </h2>
+
+<div class="col-12 bg-light d-flex flex-column align-items-center flex-md-row flex-lg-row justify-content-md-center justify-content-lg-center align-items-md-start  align-items-lg-start">
+
+    <div class="col-12 col-md-6 col-lg-3 bg-white p-2 border rounded m-2 d-flex align-items-center justify-content-start ">
+        <img class="img-fluid" src="./MisRecursos/Img/imgDeveloper2.jpg" alt="">
+
+        <ul class="nav nav-pills">
+
+            @if (User.IsInRole("adm"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link active bg-info" aria-current="page" asp-action="Crear">Agregar Cliente</a>
+
+                </li>
+            }
+
+            
+        </ul>
+
+    </div>
+
+
+    <div class="col-12 col-md-8 col-lg-8 container-fluid bg-white p-2 border rounded m-2 float-lg-start ">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var myCliente in Model)
+                {
+                <tr>
+                    <th scope="row">@myCliente.Codigo</th>
+                    <td>@myCliente.Nombre</td>
+                    <td>@myCliente.Apellido</td>
+                    <td>@myCliente.Correo</td>
+                    <td>@myCliente.Celular</td>
+                    <td>
+                        @if (User.IsInRole("adm") || User.IsInRole("coordinador"))
+                        {
+                            @Html.ActionLink("Editar", "Editar", new { id = @myCliente.Codigo })
+                            @Html.ActionLink("Borrar", "Borrar", new { id = @myCliente.Codigo })
+                        }
+                        @if (User.IsInRole("vendedor") || User.IsInRole("adm") || User.IsInRole("coordinador"))
+                        {
+                            @Html.ActionLink("Detalle", "Detalle", new { id = @myCliente.Codigo })
+                        }
+                    </td>
+                </tr>
+
+                }
+
+            </tbody>
+        </table>
+
+        
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }),
+           new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+           {
+               DisplayItemSliceAndTotal = false,
+               ContainerDivClasses = new[] { "navigation" },
+               LiElementClasses = new[] { "page-item" },
+               PageClasses = new[] { "page-link" },
+
+           })
+
+        @section Scripts {
+            <script>
+                $(document).ready(fuction () {
+                    $(ul.pagination > li.disabled > a').addClass('page-link');
+                });
+            </script>
+
+        }
+
+        
+
+
+    </div>
+
+
+
+</div>

@@ -1,0 +1,55 @@
+@model AppBootstrap.Model.Usuario;
+@{
+    ViewData["Title"] = "Registo";
+}
+
+<h2 class="text-center m-2"> Registro </h2>
+
+<div class="col-12 bg-light d-flex flex-column align-items-center flex-md-row flex-lg-row justify-content-md-center justify-content-lg-center align-items-md-start  align-items-lg-start">
+
+   
+
+
+    <div class="col-12 col-md-12 col-lg-12 bg-white p-3 border rounded m-2">
+
+        <form asp-action="Registro" class="row g-3 needs-validation">
+            <div class="col-md-4">
+                <label class="form-label">Id</label>
+                <input asp-for="Id" type="text" class="form-control" required placeholder="0000">
+                <span class=" text-danger">@ViewData["msj"]</span>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control" required placeholder="Nombre ">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Usuario</label>
+                <input asp-for="Apodo" type="text" class="form-control" required placeholder=" Usuario">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Rol</label>
+                <input asp-for="Rol" type="text" class="form-control" required placeholder=" adm, cliente, vendedor">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Contrasena</label>
+                <input asp-for="Contrasena" type="password" class="form-control" required placeholder="">
+            </div>
+
+
+
+            <div class="col-12 text-center">
+                <button class="btn btn-info " type="submit">Registrarse</button>
+            </div>
+        </form>
+    
+
+        
+
+
+    </div>
+
+
+
+</div>

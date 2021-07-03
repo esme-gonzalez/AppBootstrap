@@ -1,0 +1,60 @@
+.ico {
+    width: 30px;
+}
+
+.imagenes {
+    width: 35px;
+}
+
+.servicios {
+    width: 70px;
+    align-items: center;
+    display: block;
+}
+
+.contenedorUl{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedorLink {
+   height: 50%;
+}
+
+.opcionesMenu {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+}
+
+.opcionesLogin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%; 
+    height: 50px;
+}
+.boton {
+    padding: 10px;
+    font-weight: 200;
+    font-size: 15px;
+    color: white;
+    background-color: #a09f9f;
+    border-radius: 3px;
+    border: 2px solid #a09f9f;
+}
+
+
+
+.boton2 {
+    padding: 10px;
+    font-weight: 200;
+    font-size: 15px;
+    color: white;
+    background-color: #3B6586;
+    border-radius: 3px;
+    border: 2px solid #3B6586;
+}

@@ -1,0 +1,73 @@
+@model AppBootstrap.Model.Cliente;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@{
+    ViewData["Title"] = "Borrar";
+}
+
+<h2 class="text-center m-2"> Borrar de Clientes </h2>
+
+<div class="col-12 bg-light d-flex flex-column align-items-center flex-md-row flex-lg-row justify-content-md-center justify-content-lg-center align-items-md-start  align-items-lg-start">
+
+    <div class="col-12 col-md-6 col-lg-3 bg-white p-2 border rounded m-2 d-flex align-items-center justify-content-start ">
+        <img class="img-fluid" src="./MisRecursos/Img/imgDeveloper2.jpg" alt="">
+
+        <ul class="nav nav-pills">
+            @if (User.IsInRole("adm"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link active bg-info" aria-current="page" asp-action="Crear">Agregar Cliente</a>
+
+                </li>
+            }
+            </ul>
+</div>
+
+
+    <div class="col-12 col-md-6 col-lg-8 bg-white p-3 border rounded m-2">
+        <div class="p-3 mb-2 bg-danger text-white fs-3">Realmente esta seguro de borrar los datos</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr>
+                    <th scope="row">@Model.Codigo</th>
+                    <td>@Model.Nombre</td>
+                    <td>@Model.Correo</td>
+                    <td>@Model.Apellido</td>
+                    <td>@Model.Celular</td>
+                    <td></td>
+                </tr>
+
+               
+
+            </tbody>
+        </table>
+
+       <div>
+           <form asp-action="Borrar">
+               <input asp-for="Codigo" type="hidden" class="form-control">
+               <button class="btn btn-info" type="submit">Borrar  Datos</button>
+           </form>
+       </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>

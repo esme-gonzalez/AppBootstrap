@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Bienvenidos";
+}
+
+
+<h2 class="text-center m-2"> Informacion Privada </h2>
+
+ 
+
+        <div class="col-12 d-flex flex-column align-items-center flex-md-row flex-lg-row justify-content-md-center justify-content-lg-center align-items-md-start  align-items-lg-start">
+            <div class="col-12 col-md-6 col-lg-6 bg-white p-3 border rounded m-2">
+
+                <h2 class="text-center m-2"> Usuario  @User.Identity.Name  no tiene permiso para la tarea que quiso hacer</h2>
+
+            </div>
+
+
+            <div class="col-12 col-md-6 col-lg-6 bg-white p-3 border rounded m-2">
+                <ol>
+
+                    @foreach (var c in User.Claims)
+                    {
+                    <li>@c.Type: @c.Value</li>
+                    }
+                </ol>
+
+            </div>
+
+
+
+        </div>
